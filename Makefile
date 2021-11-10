@@ -6,7 +6,7 @@
 #    By: mlarra <mlarra@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 11:55:00 by mlarra            #+#    #+#              #
-#    Updated: 2021/11/10 12:33:54 by mlarra           ###   ########.fr        #
+#    Updated: 2021/11/10 15:16:18 by mlarra           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SRCS	=	ft_printf.c	ft_print_str.c	ft_print_char.c	ft_print_dig.c\
 HEADER	= ft_printf.h
 
 OBJS	= ${SRCS:.c=.o}
+
+OBJS_B	= ${SRCS:.c=.o}
 
 CFLAGS	= -Wall -Wextra -Werror
 
@@ -48,4 +50,6 @@ fclean	:	clean
 	
 re		:	fclean all
 
-bonus	:	all
+bonus	:	${OBJS_B} ${HEADER}
+			cd ./libft && ${MAKE}
+			ar rcs ${NAME} libft/*.o $?
